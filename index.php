@@ -1,14 +1,32 @@
-<?php
-
-require_once 'Aluno.php';
-
-$aluno = new Aluno();
-$aluno.setNome("Renan");
-$aluno.setEmail("renangomes.es@gmail.com");
-$aluno.setCurso("Ciência da Computação");
-
-echo $aluno->nome;
-echo $aluno->email;
-echo $aluno->curso;
-
-?>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+    <form action="cadastrar.php" method="post">
+        <label>Nome: <input type="text" name="nome" required></label>
+        <br>
+        <label>E-mail: <input type="text" name="email" required></label>
+        <br>
+        <label>Curso:</label>
+        <br>
+        <label><input type="radio" name="curso" checked value="ccomp" required> Ciência da Computação</label>
+        <br>
+        <label><input type="radio" name="curso" value="engcomp"> Engenharia da Computação</label>
+        <br>
+        <input type="submit" value="Cadastrar">
+    </form>
+    <div class="cadastrados">
+        <table>
+            <?php
+                $select = file("database/alunos.txt");
+                for($i = 0 ; $i < count($select) ; $i++){
+                    echo "<tr>";
+                    echo "<td>".$select[$i]."<td>";
+                    echo "</tr>";
+                }
+            ?>
+        </table>
+    </div>
+</body>
+</html>

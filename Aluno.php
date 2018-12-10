@@ -3,9 +3,9 @@ class Aluno{
 
 	// atributos
 
-	private $nome;
-	private $email;
-	private $curso;
+	public $nome;
+	public $email;
+	public $curso;
 
 	// getters
 
