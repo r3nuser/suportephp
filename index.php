@@ -1,6 +1,6 @@
 <?php
 
-require_once 'aluno.php';
+require_once 'Aluno.php';
 
 $aluno = new Aluno();
 $aluno.setNome("Renan");
