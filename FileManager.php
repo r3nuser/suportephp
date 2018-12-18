@@ -1,7 +1,7 @@
 <?php
 
 class FileManager{
-    
+
     public $path;
     public $mode;
     public $file;
@@ -18,7 +18,7 @@ class FileManager{
         fwrite($this->file, $content);
     }
 
-    public function FileManager($p, $m){
+    public function __construct($p, $m){
         $this->path = $p;
         $this->mode = $m;
 
