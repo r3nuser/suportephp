@@ -1,5 +1,7 @@
 <?php
 
+require_once 'Aluno.php';
+
 class Connection{
 
 	public $user;
@@ -39,13 +41,39 @@ class Connection{
 		}
 	}
 
-	public function Connection( $u, $p, $h, $d ){
+	public function __construct( $u, $p, $h, $d ){
 		$this->setUser($u);
 		$this->setPass($p);
 		$this->setHost($h);
 		$this->setDb($d);
 
 		$this->openConnection();
+	}
+
+	public function createAluno ( $aluno ) {
+		$sql = "INSERT INTO aluno VALUES( null, '".$aluno->getNome()."', '".$aluno->getEmail()."', '".$aluno->getCurso()."')";
+		mysqli_query($this->con, $sql);
+	}
+
+	public function readAluno ( ) {
+		$sql = "SELECT * FROM aluno;";
+		$result = mysqli_query( $this->con, $sql );
+
+		return $result;
+	}
+
+	public function deleteAluno ( $id ){
+		$sql = "DELETE FROM aluno WHERE aluno_cod=".$id.";";
+		mysqli_query( $this->con, $sql );
+	}
+
+	public function alterAluno ( $aluno ){
+		$sql = "UPDATE aluno SET nome='".$aluno->getNome()."', email='".$aluno->getEmail()."', curso='".$aluno->getCurso()."' WHERE aluno_cod=".$aluno->getId().";";
+		if( mysqli_query( $this->con, $sql ) ){
+			echo "alterado com sucesso!";
+		} else {
+			echo mysqli_error($this->con);
+		}
 	}
 
 }

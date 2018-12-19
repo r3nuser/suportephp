@@ -1,6 +1,6 @@
 <?php
 
-    require_once 'FileManager.php';
+    require_once 'Connection.php';
     require_once 'Aluno.php';
 
     $aluno = new Aluno();
@@ -9,14 +9,9 @@
     $aluno->setEmail($_POST["email"]);
     $aluno->setCurso($_POST["curso"]);
 
-    $content = $aluno->getNome().
-                " ".$aluno->getEmail().
-                " ".$aluno->getCurso()."\n";
+    $con = new Connection('root', 'pqplar2016', 'localhost', 'crudphp_renan');
 
-    $file = new FileManager("database/alunos.txt", "a");
-
-    $file->addInFile($content);
-    $file->closeFile();
+    $con->createAluno( $aluno );
 
     header('Location: /index.php');
 

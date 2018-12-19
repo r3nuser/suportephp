@@ -1,13 +1,19 @@
 <?php
+
 class Aluno{
 
 	// atributos
 
+	public $id;
 	public $nome;
 	public $email;
 	public $curso;
 
 	// getters
+
+	public function getId(){
+		return $this->id;
+	}
 
 	public function getNome(){
 		return $this->nome;
@@ -22,6 +28,10 @@ class Aluno{
 	}
 
 	// setters
+
+	public function setId($i){
+		$this->id = $i;
+	}
 
 	public function setNome($n){
 		$this->nome = $n;
